@@ -1,0 +1,19 @@
+.navbar {
+    background-color: #087ce7;
+    color: #ffffff;
+    margin: 2px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#input {
+    margin: 5px;
+    height: 40px;
+    width: 300px;
+}
+#array_input{
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    color: firebrick;
+}
