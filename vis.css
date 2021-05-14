@@ -8,12 +8,27 @@
 #input {
     margin: 5px;
     height: 40px;
-    width: 300px;
 }
+
 #array_input{
     text-align: center;
     font-size: 30px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-style: italic;
     color: firebrick;
+}
+
+#algo {
+    height: 50px;
+    width: 100%;
+    background-color: green;
+    color: #ffffff;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+button.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width:90%;
 }
