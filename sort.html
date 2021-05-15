@@ -6,7 +6,7 @@
         <meta name = "viewport" content = "width=device-width, initial-scale = 1">
         <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" >
         <script src ="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-        <script src="F:\project\javascript\sort.js"></script>
+        <script src="../SortingVisualizer/sort.js"></script>
         <link rel = "stylesheet" href = "vis.css">
     </head>
     <body>
@@ -35,6 +35,25 @@
             </div>
             <br>
             <p id="array_input"></p>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-4 col-sm-4">
+                        <button id="algo" onclick=bubblesort()>
+                            Bubble Sort
+                        </button>
+                    </div>
+                    <div class="col-4 col-sm-4" onclick=insertionsort()>
+                        <button id="algo">
+                            Insertion Sort
+                        </button>
+                    </div>
+                    <div class="col-4 col-sm-4">
+                        <button id="algo">
+                            Selection Sort
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
