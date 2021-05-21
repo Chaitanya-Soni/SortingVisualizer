@@ -24,13 +24,16 @@
                 <div class="card-img-overlay text-center">
                     <div class="row justify-content-center">
                         <div class="col-12 col-sm-12">
-                            <input type="text" name="number" placeholder="Enter any number here" id="input" required>
+                            <input type="text" name="number" placeholder="Enter any array here" id="input" required>
                         
                         &nbsp; &nbsp; &nbsp;
                         <button onclick="getarray()" style="height:40px;width:70px;">
-                            Enter</button>
-                        <button onclick="getRandomarray()" style="height:40px;width:70px;">
-                                random array</button>    
+                            Enter
+                        </button>
+                        &nbsp; &nbsp; &nbsp;
+                        <button onclick="getRandomarray()" style="height:40px;width: 130px;">
+                            Random Array
+                        </button>
                         </div>
                     </div>
                 </div>
@@ -55,9 +58,13 @@
                         </button>
                     </div>
                 </div>
-            </div>
-            <div>
-                <canvas id="graph" width="1000" height="600" style="border:1px solid #000000 ;"></canvas>
+                <br />
+                <br />
+                <div class="row">
+                    <div class="col-12 col-sm-12 text-center">
+                        <canvas id="graph" style="border:1px solid #000000 ;"></canvas>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
