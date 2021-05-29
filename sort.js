@@ -62,6 +62,7 @@ function getRandomarray(){
 }
 
 async function bubblesort() {
+
     let s = document.getElementById("input").value;
     let c = s.split(" ").map(i => parseInt(i));
     console.log(c);
@@ -73,6 +74,7 @@ async function bubblesort() {
     let m=Math.max(...c);
     h=h/m;
     let wt=ctx.canvas.width/n;
+    var nswap = 0;
     for(let i=0;i<n-1;i++){
         for(let j=0;j<n-i-1;j++){
             ctx.fillStyle = "blue";
@@ -85,15 +87,17 @@ async function bubblesort() {
             await new Promise((resolve) => 
                 setTimeout(() => {
                     resolve();
-                }, 3000)//miliseconds
+                }, 2000)//miliseconds
             );
-            if(c[j]>c[j+1]){
+
+            if(c[j]>c[j+1]) {
                 
                 ctx.clearRect(t*wt-1,0,ctx.canvas.width/(4*n)+2,ctx.canvas.height);
                 ctx.clearRect(j*wt-1,0,ctx.canvas.width/(4*n)+2,ctx.canvas.height);
                 let temp=c[j+1];
                 c[j+1]=c[j];
                 c[j]=temp;
+                nswap++;
                 ctx.fillStyle = "green";
                 ctx.fillRect(j*wt,ctx.canvas.height-(h*c[j]),ctx.canvas.width/(4*n),h*c[j]);
                 ctx.fillRect(t*wt,ctx.canvas.height-(h*c[t]),ctx.canvas.width/(4*n),h*c[t]);
@@ -108,7 +112,6 @@ async function bubblesort() {
                 ctx.fillRect(j*wt,ctx.canvas.height-(h*c[j]),ctx.canvas.width/(4*n),h*c[j]);
                 ctx.fillRect(t*wt,ctx.canvas.height-(h*c[t]),ctx.canvas.width/(4*n),h*c[t]);
 
-
             }
             ctx.clearRect(t*wt-1,0,ctx.canvas.width/(4*n)+2,ctx.canvas.height);
             ctx.clearRect(j*wt-1,0,ctx.canvas.width/(4*n)+2,ctx.canvas.height);
@@ -117,5 +120,70 @@ async function bubblesort() {
             ctx.fillRect(t*wt,ctx.canvas.height-(h*c[t]),ctx.canvas.width/(4*n),h*c[t]);
         }
     }
+    document.getElementById("no_of_swaps").innerHTML = "Number Of Swaps: " + nswap;
     console.log("sorted ",c);
+}
+
+async function insertionsort() {
+
+    let s = document.getElementById("input").value;
+    let c = s.split(" ").map(i => parseInt(i));
+    let can = document.getElementById("graph");
+    let ctx = can.getContext("2d");
+    let n = c.length;
+    let h = ctx.canvas.height;
+    let m = Math.max(...c)
+    h = h/m;
+    let wt = ctx.canvas.width/n;
+    for (let i=1;i<n;i++) {
+        let k = c[i];
+        let j = i-1;
+        let t = j+1;
+        ctx.clearRect(t*wt-1,0,ctx.canvas.width/(4*n)+2,ctx.canvas.height);
+        ctx.fillStyle = "blue";
+        ctx.fillRect(t*wt,ctx.canvas.height-(h*c[t]),ctx.canvas.width/(4*n),h*c[t]);
+        ctx.clearRect(j*wt-1,0,ctx.canvas.width/(4*n)+2,ctx.canvas.height);
+        ctx.fillStyle = "blue";
+        ctx.fillRect(j*wt,ctx.canvas.height-(h*c[j]),ctx.canvas.width/(4*n),h*c[j]);
+        await new Promise ((resolve) =>
+            setTimeout(() => {
+                resolve();
+            }, 1500)    // in milliseconds
+        );
+        while(k < c[j] && j >= 0)
+        {
+            await new Promise ((resolve) =>
+                setTimeout(() => {
+                    resolve();
+                }, 1500)    // in milliseconds
+            );
+            ctx.clearRect((j+1)*wt-1,0,ctx.canvas.width/(4*n)+2,ctx.canvas.height);
+            ctx.clearRect(j*wt-1,0,ctx.canvas.width/(4*n)+2,ctx.canvas.height);
+            c[j+1] = c[j];
+            ctx.fillStyle = "green";
+            ctx.fillRect(j*wt,ctx.canvas.height-(h*c[j]),ctx.canvas.width/(4*n),h*c[j]);
+            ctx.fillRect((j+1)*wt,ctx.canvas.height-(h*c[j+1]),ctx.canvas.width/(4*n),h*c[j+1]);
+            await new Promise((resolve) => 
+                setTimeout(() => {
+                    resolve();
+                }, 300)
+            );
+            ctx.clearRect((j+1)*wt-1,0,ctx.canvas.width/(4*n)+2,ctx.canvas.height);
+            ctx.clearRect(j*wt-1,0,ctx.canvas.width/(4*n)+2,ctx.canvas.height);
+            ctx.fillStyle = "black";
+            ctx.fillRect(j*wt,ctx.canvas.height-(h*c[j]),ctx.canvas.width/(4*n),h*c[j]);
+            ctx.fillRect((j+1)*wt,ctx.canvas.height-(h*c[j+1]),ctx.canvas.width/(4*n),h*c[j+1]);
+            --j;
+        }
+        t=j+1;
+        c[j+1] = k;
+        console.log("Value of t",t);
+        ctx.clearRect(t*wt-1,0,ctx.canvas.width/(4*n)+2,ctx.canvas.height);
+        ctx.clearRect(j*wt-1,0,ctx.canvas.width/(4*n)+2,ctx.canvas.height);
+        ctx.fillStyle = "black";
+        ctx.fillRect(t*wt,ctx.canvas.height-(h*c[t]),ctx.canvas.width/(4*n),h*c[t]);
+        ctx.fillRect(j*wt,ctx.canvas.height-(h*c[j]),ctx.canvas.width/(4*n),h*c[j]);
+    }
+
+    console.log("sorted",c);
 }
