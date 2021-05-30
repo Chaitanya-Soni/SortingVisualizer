@@ -19,6 +19,14 @@
     color: firebrick;
 }
 
+#no_of_swaps{
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    color: #087ce7;
+}
+
 #algo {
     height: 50px;
     width: 100%;
