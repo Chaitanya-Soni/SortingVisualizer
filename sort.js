@@ -38,17 +38,17 @@ function getarray(){
 }
 
 function getRandomarray() {
+  c = []
   let n=Math.floor(Math.random() * (200-1) + 1);
   for(let i=0;i<n;i++){
       c.push(Math.floor(Math.random() * (1000-1) + 1));
   }
-  document.getElementById("array_input").innerHTML = "Current array is: " + c;
-  let w = 1000 / n;
+  document.getElementById("random_input").innerHTML = "Current array is: " + c;
+  let can = document.getElementById("graph");
+  let ctx = can.getContext("2d");
   let h = 600;
   let m = Math.max(...c);
   h = h / m;
-  let can = document.getElementById("graph");
-  let ctx = can.getContext("2d");
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
   window.addEventListener("resize", render);
   render();
@@ -94,6 +94,7 @@ async function bubblesort() {
                 c[j+1]=c[j];
                 c[j]=temp;
                 nswap++;
+                document.getElementById("no_of_swaps").innerHTML = "Number Of Swaps: " + nswap;
                 ctx.fillStyle = "green";
                 ctx.fillRect(j*wt,ctx.canvas.height-(h*c[j]),ctx.canvas.width/(4*n),h*c[j]);
                 ctx.fillRect(t*wt,ctx.canvas.height-(h*c[t]),ctx.canvas.width/(4*n),h*c[t]);
@@ -131,6 +132,7 @@ async function selectionsort() {
     speed= document.getElementById("myRange").value;
     console.log(c);
     let minindx;
+    var nswap = 0;
     for(let i = 0; i < n; i++) {
         
         minindx = i;
@@ -170,9 +172,11 @@ async function selectionsort() {
          }
          if (minindx != i) {
      
-            let tmp = c[i]; 
+            let tmp = c[i];
             c[i] = c[minindx];
-            c[minindx] = tmp;      
+            c[minindx] = tmp;
+            nswap++;
+            document.getElementById("no_of_swaps").innerHTML = "Number Of Swaps: " + nswap;
             ctx.clearRect(minindx*wt-1,0,ctx.canvas.width/(4*n)+2,ctx.canvas.height);
             ctx.clearRect(i*wt-1,0,ctx.canvas.width/(4*n)+2,ctx.canvas.height);
             ctx.fillStyle = "black";
@@ -185,20 +189,20 @@ async function selectionsort() {
         ctx.fillRect(minindx*wt,ctx.canvas.height-(h*c[minindx]),ctx.canvas.width/(4*n),h*c[minindx]);
 
     }
+    document.getElementById("no_of_swaps").innerHTML = "Number Of Swaps: " + nswap;
     console.log("sorted ",c);
 }
 
 async function insertionsort() {
 
-    let s = document.getElementById("input").value;
-    c = s.split(" ").map(i => parseInt(i));
     let can = document.getElementById("graph");
     let ctx = can.getContext("2d");
     let n = c.length;
-    let h = ctx.canvas.height;
+    let h = 600;
     let m = Math.max(...c)
     h = h/m;
     let wt = ctx.canvas.width/n;
+    var nswap=0;
     for (let i=1;i<n;i++) {
         let k = c[i];
         let j = i-1;
@@ -212,20 +216,30 @@ async function insertionsort() {
         await new Promise ((resolve) =>
             setTimeout(() => {
                 resolve();
-            }, 1500)    // in milliseconds
+            }, speed)    // in milliseconds
         );
         while(k < c[j] && j >= 0)
         {
+            ctx.clearRect((j+1)*wt-1,0,ctx.canvas.width/(4*n)+2,ctx.canvas.height);
+            ctx.fillStyle = "blue";
+            ctx.fillRect((j+1)*wt,ctx.canvas.height-(h*k),ctx.canvas.width/(4*n),h*k);
+            ctx.clearRect(j*wt-1,0,ctx.canvas.width/(4*n)+2,ctx.canvas.height);
+            ctx.fillStyle = "blue";
+            ctx.fillRect(j*wt,ctx.canvas.height-(h*c[j]),ctx.canvas.width/(4*n),h*c[j]);
+            speed = document.getElementById("myRange").value;
+            console.log(c);
             await new Promise ((resolve) =>
                 setTimeout(() => {
                     resolve();
-                }, 1500)    // in milliseconds
+                }, speed)    // in milliseconds
             );
             ctx.clearRect((j+1)*wt-1,0,ctx.canvas.width/(4*n)+2,ctx.canvas.height);
             ctx.clearRect(j*wt-1,0,ctx.canvas.width/(4*n)+2,ctx.canvas.height);
             c[j+1] = c[j];
+            nswap++;
+            document.getElementById("no_of_swaps").innerHTML = "Number Of Swaps: " + nswap;
             ctx.fillStyle = "green";
-            ctx.fillRect(j*wt,ctx.canvas.height-(h*c[j]),ctx.canvas.width/(4*n),h*c[j]);
+            ctx.fillRect(j*wt,ctx.canvas.height-(h*k),ctx.canvas.width/(4*n),h*k);
             ctx.fillRect((j+1)*wt,ctx.canvas.height-(h*c[j+1]),ctx.canvas.width/(4*n),h*c[j+1]);
             await new Promise((resolve) => 
                 setTimeout(() => {
@@ -241,7 +255,7 @@ async function insertionsort() {
         }
         t=j+1;
         c[j+1] = k;
-        console.log("Value of t",t);
+        document.getElementById("no_of_swaps").innerHTML = "Number Of Swaps: " + nswap;
         ctx.clearRect(t*wt-1,0,ctx.canvas.width/(4*n)+2,ctx.canvas.height);
         ctx.clearRect(j*wt-1,0,ctx.canvas.width/(4*n)+2,ctx.canvas.height);
         ctx.fillStyle = "black";
