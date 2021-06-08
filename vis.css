@@ -19,6 +19,14 @@
     color: firebrick;
 }
 
+#random_input {
+    width: 40%;
+    font-size: 25px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    color: firebrick;
+}
+
 #no_of_swaps{
     text-align: center;
     font-size: 20px;
