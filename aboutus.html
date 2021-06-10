@@ -5,9 +5,57 @@
         <meta name = "viewport" content = "width=device-width, initial-scale = 1">
         <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" >
         <script src ="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel = "stylesheet" href = "vis.css">
     </head>
     <body>
-        Hello World
+        <div class="navbar">
+            <span class="navbar-brand mb-0">
+                <h3><span style="background-color: #087ce7; color: white;" onclick="goback()"><i class="fa fa-arrow-left"></i></span>&nbsp;About Us</h3>
+            </span>
+        </div>
+        <script>
+            function goback() {
+                window.history.back();
+            }
+        </script>
+        <br />
+        <br/>
+        <div class="container">
+            <h3><b>About Visualizer - </b></h3>
+            <p>This web app is a sorting visualizer developed in keeping aim for providing 
+                a better visualization experience for the learners so that they can understand 
+                better. This can be used in both ways as you can manually enter an array or 
+                generate a random array. In visualization, there are currently bubble sort, 
+                selection sort and insertion sort are available for visualization. 
+            </p>
+            <br/>
+            <br/>
+            <h3>Developers -</h3>
+            <div class="row">
+                <div class="col-3 col-sm-2">
+                    <div class="card">
+                        <img class="card-img" width="100%" height="200px;" src="shikhar1.jpeg" alt="Shikhar Shah">
+                    </div>
+                </div>
+                
+                <div class="col-9 col-sm-10">
+                    <h4><b>Shikhar Shah</b></h4>
+                    <span>Indian Institute of Information Technology Vadodara</span>
+                        <br/>
+                    <span>B.Tech Computer Science and Engineering</span>
+                        <br/>
+                    <span>Batch: 2019-23</span>
+                        <br/>
+                    <b style="font-size: 20px;">Connect - </b>
+                    <a style="font-size: 40px;" href="https://www.github.com/Shikhar30Shah" class="fa fa-github"></a>
+                        &nbsp;
+                    <a style="font-size: 40px;" href="https://www.linkedin.com/in/shikhar-shah-11878b1b4/" class="fa fa-linkedin"></a>
+                        <br/>
+                    <span><i class="fa fa-envelope"></i> - shikharshah30@gmail.com</span>
+                </div>
+            </div>
+            
+        </div>
     </body>
 </html>
