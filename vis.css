@@ -49,3 +49,11 @@ button.truncate {
     white-space: nowrap;
     max-width:90%;
 }
+
+i:hover {
+    color:rgb(151, 142, 142);
+}
+
+#about:hover {
+    text-decoration: underline;
+}
